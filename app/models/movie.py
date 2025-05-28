@@ -10,6 +10,7 @@ from django.utils.text import slugify
 from app.models.base import TimeModelBase
 
 
+
 class Category(Model):
     name = CharField(max_length=100)
 
