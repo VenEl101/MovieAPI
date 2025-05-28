@@ -244,7 +244,7 @@ class FavouriteMovies(TimeModelBase):
 
 class TranslateMovies(TimeModelBase):
 
-    movie = ForeignKey('Movie', on_delete=CASCADE)
+    movie = ForeignKey('Movie', on_delete=CASCADE, unique=True)
     movie_fund = PositiveBigIntegerField(db_default=0)
     collected_money = PositiveBigIntegerField(default=0)
     is_finish = BooleanField(default=False)

@@ -1,7 +1,6 @@
-from django.contrib.auth.hashers import make_password
+
 from django.contrib.postgres.search import TrigramSimilarity
 from django.core.cache import cache
-from django.core.mail import send_mail
 from django.db import transaction
 from django.db.models import Count, Sum
 from django.shortcuts import get_object_or_404
@@ -142,7 +141,7 @@ class UserLoginGenericAPIView(GenericAPIView):
 
 @extend_schema(tags=['movie'])
 class PremierMovies(ListAPIView):
-    queryset = Movie.objects.all()
+    queryset = Movie.objects.all().order_by('-created_at')
     serializer_class = MovieModelSerializer
     pagination_class = PageNumberPagination
 
