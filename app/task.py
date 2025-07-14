@@ -1,7 +1,7 @@
 
 from celery import shared_task
 from django.core.mail import send_mail, get_connection
-
+from root import settings
 from .models import PurchaseMovie, Notification, OrderSubscription, Subscribers, OrderSubscriptionItem
 
 
@@ -79,7 +79,7 @@ def send_otp_email(email, code):
     print('123')
     subject = "Your Verification Code"
     message = f"Your verification code is: {code}"
-    from_email = 'vnoreply58@gmail.com'
+    from_email = setting.EMAIL_HOST_USER
     recipient_list = [email]
 
     return send_mail(subject, message, from_email, recipient_list)
